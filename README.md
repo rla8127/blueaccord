@@ -32,6 +32,12 @@
 * Apache Tomcat 9
 * MySQL WorkBench 8.0
 
+# 인프라환경 Infra Environment
+* Haproxy & Keepalived
+* Ubuntu 22.04.4
+* Docker
+* Prometheus & Grafana
+
 # 연락 Contact
 해당 프로젝트에 대한 이슈를 생성하고 싶거나 연락하고 싶다면 아래로 연락해주세요.
-* [Donghyun Kim](kubelet8127@gmail.com)
+김동현 (kubelet8127@gmail.com)
