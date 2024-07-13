@@ -26,6 +26,10 @@
 * HTML5
 * CSS3
 
+**ERD**
+![blueaccord db](https://github.com/user-attachments/assets/a2244af2-777c-4d17-acdd-bbf5d051c049)
+
+
 # 개발환경 Development Environment
 * Intellij Community 2024.1.4
 * Visaul Studio Code
@@ -41,5 +45,5 @@
 * Prometheus & Grafana
 
 # 연락 Contact
-해당 프로젝트에 대한 이슈를 생성하고 싶거나 연락하고 싶다면 아래로 연락해주세요.
+해당 프로젝트에 대한 이슈를 생성하고 싶거나 연락하고 싶다면 아래로 연락해주세요.<br/>
 김동현 (kubelet8127@gmail.com)
