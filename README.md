@@ -33,8 +33,10 @@
 * MySQL WorkBench 8.0
 
 # 인프라환경 Infra Environment
+* Oracle Cloud 
 * Haproxy & Keepalived
-* Ubuntu 22.04.4
+* AWS Route 53
+* 홈 서버 32GB liunx - Ubuntu 22.04.4
 * Docker
 * Prometheus & Grafana
 
