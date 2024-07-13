@@ -1,0 +1,86 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body{
+    position: relative;
+    margin: 0;
+    min-height: 100%;
+    padding-bottom: 300px;
+    box-sizing: inherit;
+}
+
+footer{
+    border-top: 1px solid #e5e5e5;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 40px 80px 40px;
+    color:  black;
+    line-height: 20px;
+}
+
+.footer-container{
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.logo{
+    font-size: 30px;
+    font-family: "Black Han Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.company-container{
+    min-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.info{
+    margin-top: 5px;
+}
+
+.info .info-item{
+    display: inline-block;
+    margin-top: 12px;
+    margin-right: 15px;
+}
+
+.menu{
+    
+}
+
+.wrap-header{
+    font-family: "Hahmlet", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.menu .wrap{
+    display: flex;
+    flex-direction: column;
+    margin-left: calc(80 / 1920* 100vw);
+}
+
+.menu p{
+    margin-bottom: 16px;
+    font-size: 20px;
+}
+
+.menu .bk a {
+    padding-bottom: 5px;
+    color: black;
+}
+
+
+
+
+

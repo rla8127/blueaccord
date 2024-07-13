@@ -1,0 +1,22 @@
+<svg id="그룹_461229" data-name="그룹 461229" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_7201" data-name="사각형 7201" width="20" height="20" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="그룹_461228" data-name="그룹 461228" clip-path="url(#clip-path)">
+    <g id="그룹_461227" data-name="그룹 461227">
+      <g id="그룹_461226" data-name="그룹 461226" clip-path="url(#clip-path)">
+        <g id="그룹_461225" data-name="그룹 461225" opacity="0">
+          <g id="그룹_461224" data-name="그룹 461224">
+            <g id="그룹_461223" data-name="그룹 461223" clip-path="url(#clip-path)">
+              <rect id="사각형_7198" data-name="사각형 7198" width="20" height="20" fill="#f15a24"/>
+            </g>
+          </g>
+        </g>
+        <circle id="타원_313" data-name="타원 313" cx="5.5" cy="5.5" r="5.5" transform="translate(3 3)" fill="none" stroke="#191919" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="선_1117" data-name="선 1117" x2="4" y2="4" transform="translate(14 14)" fill="none" stroke="#191919" stroke-miterlimit="10" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

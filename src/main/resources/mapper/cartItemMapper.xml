@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.toy.dao.cartItemMapper">
+
+    <insert id="insert" parameterType="CartItemDto" useGeneratedKeys="true" keyProperty="cart_item_id">
+        INSERT INTO cart_item (cart_id, ino, count)
+        VALUES (#{cart_id}, #{ino}, #{count})
+    </insert>
+
+    <select id="select" parameterType="int" resultType="CartItemDto">
+        SELECT *
+        FROM cart_item
+        WHERE cart_item_id = #{cart_item_id}
+    </select>
+
+    <select id="selectCartItem" parameterType="map" resultType="CartItemDto">
+        SELECT *
+        FROM cart_item
+        WHERE cart_id = #{cart_id} AND ino = #{ino}
+    </select>
+
+    <select id="selectMyCartListAll" parameterType="int" resultType="CartListDto">
+        SELECT ci.cart_id, ci.cart_item_id, i.ino, i.item_nm, i.price, ci.count, ii.imgUrl AS rep_img_url
+        FROM cart_item ci
+        JOIN item i ON ci.ino = i.ino
+        LEFT JOIN
+        item_img ii ON i.ino = ii.ino AND ii.repImgYn = 'y'
+        WHERE ci.cart_id = #{cart_id};
+    </select>
+
+    <select id="selectMyCartList" parameterType="int" resultType="CartListDto">
+        SELECT ci.cart_id, ci.cart_item_id, i.ino, i.item_nm, i.price, ci.count, ii.imgUrl AS rep_img_url
+        FROM cart_item ci
+        JOIN item i ON ci.ino = i.ino
+        LEFT JOIN
+        item_img ii ON i.ino = ii.ino AND ii.repImgYn = 'y'
+        WHERE ci.cart_item_id = #{cart_item_id};
+    </select>
+
+    <select id="getCartItemId" parameterType="CartItemDto" resultType="int">
+        SELECT cart_item_id
+        FROM cart_item
+        WHERE cart_id = #{cart_id} AND ino = #{ino};
+    </select>
+
+    <update id="addUpdate" parameterType="CartItemDto">
+        UPDATE cart_item
+        SET count = count + #{count}
+        WHERE cart_id = #{cart_id} AND ino = #{ino};
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM cart_item
+        WHERE cart_item_id = #{cart_item_id}
+    </delete>
+
+    <update id="update" parameterType="CartItemDto">
+        UPDATE cart_item
+        SET count = #{count}
+        WHERE cart_id = #{cart_id} AND ino = #{ino};
+    </update>
+
+</mapper>

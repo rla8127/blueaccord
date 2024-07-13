@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="QuestionDto" type="com.shopping.toy.domain.cs.QuestionDto"/>
+        <typeAlias alias="AnswerDto" type="com.shopping.toy.domain.cs.AnswerDto"/>
+        <typeAlias alias="SearchCondition" type="com.shopping.toy.domain.search.SearchCondition"/>
+        <typeAlias alias="itemDto" type="com.shopping.toy.domain.item.ItemDto"/>
+        <typeAlias alias="itemImgDto" type="com.shopping.toy.domain.item.ItemImgDto"/>
+        <typeAlias alias="Category" type="com.shopping.toy.constant.Category"/>
+        <typeAlias alias="CartDto" type="com.shopping.toy.domain.cart.CartDto"/>
+        <typeAlias alias="CartItemDto" type="com.shopping.toy.domain.cart.CartItemDto"/>
+        <typeAlias alias="CartListDto" type="com.shopping.toy.domain.cart.CartListDto"/>
+        <typeAlias alias="MemberDto" type="com.shopping.toy.domain.member.MemberDto"/>
+        <typeAlias alias="WishDto" type="com.shopping.toy.domain.wish.WishDto"/>
+        <typeAlias alias="WishListDto" type="com.shopping.toy.domain.wish.WishListDto"/>
+        <typeAlias alias="OrderDto" type="com.shopping.toy.domain.order.OrderDto"/>
+        <typeAlias alias="OrderItemDto" type="com.shopping.toy.domain.order.OrderItemDto"/>
+        <typeAlias alias="OrderItemListDto" type="com.shopping.toy.domain.order.OrderItemListDto"/>
+        <typeAlias alias="ReviewDto" type="com.shopping.toy.domain.review.ReviewDto"/>
+        <typeAlias alias="HelpfulDto" type="com.shopping.toy.domain.helpful.HelpfulDto"/>
+        <typeAlias alias="RatingCountDto" type="com.shopping.toy.domain.review.RatingCountDto"/>
+        <typeAlias alias="CategoryItemDto" type="com.shopping.toy.domain.item.CategoryItemDto"/>
+    </typeAliases>
+</configuration>

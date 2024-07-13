@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.toy.dao.reviewMapper">
+
+    <insert id="insert" parameterType="ReviewDto" useGeneratedKeys="true" keyProperty="review_id">
+        INSERT INTO reviews (ino, reviewer, rating, review_content)
+        values (#{ino}, #{reviewer}, #{rating}, #{review_content})
+    </insert>
+
+    <select id="hasReviewed" parameterType="map" resultType="int">
+        SELECT count(*)
+        FROM reviews
+        WHERE ino=#{ino} AND reviewer=#{reviewer}
+    </select>
+
+    <select id="getItemReview" parameterType="int" resultType="ReviewDto">
+        SELECT * FROM reviews WHERE ino=#{ino}
+    </select>
+
+    <update id="IncreaseHelpful" parameterType="int">
+        UPDATE reviews SET helpful = helpful + 1 WHERE review_id=#{review_id}
+    </update>
+
+    <update id="DecreaseHelpful" parameterType="int">
+        UPDATE reviews SET helpful = helpful - 1 WHERE review_id=#{review_id}
+    </update>
+
+    <select id="getRatingCounts" parameterType="int" resultType="RatingCountDto">
+        SELECT rating, COUNT(*) AS count
+        FROM reviews
+        WHERE ino = #{ino}
+        GROUP BY rating
+    </select>
+
+    <select id="count" parameterType="String" resultType="int">
+        SELECT count(*)
+        FROM reviews
+        WHERE reviewer = #{reviewer}
+    </select>
+
+</mapper>

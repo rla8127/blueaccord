@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.toy.dao.itemMapper">
+
+<!-- 공통 SQL 문 정의 -->
+    <sql id="selectFromItem">
+        SELECT ino, item_nm, price, stock, item_detail, category, sell_status, reg_date, up_date
+        FROM item
+    </sql>
+
+    <sql id="selectItemList">
+        SELECT i.ino, i.item_nm, i.price, i.item_detail, img.imgUrl AS repImgUrl,
+        (SELECT COUNT(*) FROM reviews r WHERE r.ino = i.ino) AS review_count
+        FROM item AS i
+        JOIN item_img AS img ON i.ino=img.ino
+        WHERE img.repImgYn="Y"
+    </sql>
+
+    <sql id="baseCategoryFilter">
+        <if test="category != null and category.name() != 'BEST' and category.name() != 'NEW'">
+            AND category = #{category}
+        </if>
+        <if test="category != null and category.name() == 'BEST'">
+            ORDER BY (SELECT count(*) FROM order_item oi WHERE oi.ino = i.ino) DESC
+        </if>
+        <if test="category != null and category.name() == 'NEW'">
+            AND i.reg_date >= DATE_SUB(CURDATE(), INTERVAL 2 WEEK)
+            ORDER BY i.reg_date DESC
+        </if>
+    </sql>
+
+    <sql id="sortCondition">
+        <choose>
+            <when test='sort_option=="N"'>
+                ORDER BY i.reg_date DESC
+            </when>
+            <when test='sort_option=="R"'>
+                ORDER BY review_count DESC
+            </when>
+            <when test='sort_option=="PL"'>
+                ORDER BY i.price ASC
+            </when>
+            <when test='sort_option=="PH"'>
+                ORDER BY i.price DESC
+            </when>
+        </choose>
+    </sql>
+
+    <select id="getSearchItems" parameterType="SearchCondition" resultType="CategoryItemDto">
+        <include refid="selectItemList"/>
+        AND item_nm LIKE concat('%', #{keyword}, '%')
+        <include refid="sortCondition"/>
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="getCategoryItems" parameterType="SearchCondition" resultType="CategoryItemDto">
+        <include refid="selectItemList"/>
+        <include refid="baseCategoryFilter"/>
+        <include refid="sortCondition"/>
+        <if test="category.name() != 'BEST'">
+            LIMIT #{offset}, #{pageSize}
+        </if>
+        <if test="category.name() == 'BEST'">
+            LIMIT 30
+        </if>
+    </select>
+
+    <select id="searchResultCnt" parameterType="SearchCondition" resultType="int">
+        SELECT count(*)
+        FROM item AS i
+        JOIN item_img AS img ON i.ino=img.ino
+        WHERE img.repImgYn="Y"
+        <include refid="baseCategoryFilter"/>
+        <if test="category == null">
+            AND item_nm LIKE concat('%', #{keyword}, '%')
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        SELECT count(*) FROM item
+    </select>
+
+    <select id="getStock" parameterType="int" resultType="int">
+        SELECT stock FROM item WHERE ino = #{ino}
+    </select>
+
+    <update id="stockUpdate" parameterType="map">
+        UPDATE item
+        SET stock = stock + #{count}
+        WHERE ino = #{ino}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM item WHERE ino = #{ino}
+    </delete>
+
+    <insert id="insert" parameterType="ItemDto" useGeneratedKeys="true" keyProperty="ino">
+        INSERT INTO item
+        (item_nm, price, stock, item_detail, category, sell_status)
+        VALUES
+        (#{item_nm}, #{price}, #{stock}, #{item_detail}, #{category}, #{sell_status})
+    </insert>
+
+    <select id="select" parameterType="int" resultType="itemDto">
+        <include refid="selectFromItem"/>
+        WHERE ino = #{ino}
+    </select>
+
+    <update id="update" parameterType="itemDto">
+        UPDATE item
+        SET  item_nm = #{item_nm}
+        , price = #{price}
+        , stock = #{stock}
+        , category = #{category}
+        , item_detail = #{item_detail}
+        , sell_status = #{sell_status}
+        , up_date = now()
+        WHERE ino = #{ino}
+    </update>
+
+    <!-- 관리자 아이템 관리용 -->
+
+    <select id="searchSelectPage" parameterType="SearchCondition" resultType="ItemDto">
+        <include refid="selectFromItem"/>
+        WHERE true
+        <include refid="sortCondition"/>
+        ORDER BY reg_date DESC, ino DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="itemResultCnt" parameterType="SearchCondition" resultType="int">
+        SELECT count(*)
+        FROM item
+        WHERE true
+        <include refid="sortCondition"/>
+    </select>
+
+</mapper>

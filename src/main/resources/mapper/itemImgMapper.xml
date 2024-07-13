@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.toy.dao.itemImgMapper">
+
+    <sql id="selectFromItemImg">
+        SELECT item_img_no, ino, imgName, oriImgName, imgUrl, repImgYn, reg_date, up_date
+        FROM item_img
+    </sql>
+
+    <insert id="insert" parameterType="itemImgDto">
+        INSERT INTO item_img
+        (ino, imgName, oriImgName, imgUrl, repImgYn)
+        VALUES
+        (#{ino}, #{imgName}, #{oriImgName}, #{imgUrl}, #{repImgYn})
+    </insert>
+
+    <select id="count" resultType="int">
+        SELECT count(*) FROM item_img
+    </select>
+
+    <select id="selectAll" resultType="itemImgDto">
+        <include refid="selectFromItemImg"/>
+    </select>
+
+    <select id="select" parameterType="int" resultType="itemImgDto">
+        <include refid="selectFromItemImg"/>
+        WHERE item_img_no = #{item_img_no}
+    </select>
+
+    <select id="selectListByIno" parameterType="int" resultType="itemImgDto">
+        <include refid="selectFromItemImg"/>
+        WHERE ino = #{ino}
+        ORDER BY repImgYn desc
+    </select>
+
+    <select id="selectOriImgName" parameterType="int" resultType="String">
+        SELECT oriImgName
+        FROM item_img
+        WHERE ino = {ino}
+        ORDER BY repImgYn desc;
+    </select>
+
+    <select id="selectRepImgYn" parameterType="int" resultType="Boolean">
+        SELECT IF(COUNT(*) = 1, 1, 0)
+        FROM item_img
+        WHERE ino = ${ino} AND repImgYn = "Y"
+    </select>
+
+    <select id="selectRepImg" parameterType="Category" resultType="String">
+        SELECT img.imgName
+        FROM item_img img
+        JOIN item i
+        ON i.ino = img.ino
+        WHERE i.category = #{category} AND repImgYn = "Y"
+        ORDER BY i.ino ASC
+    </select>
+
+    <update id="update" parameterType="itemImgDto">
+        UPDATE item_img
+        SET imgName = #{imgName}
+        , oriImgName = #{oriImgName}
+        , repImgYn = #{repImgYn}
+        , up_date = now()
+        WHERE ino = #{ino}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM item_img WHERE item_img_no=#{item_img_no}
+    </delete>
+
+    <delete id="deleteAll">
+        DELETE FROM item_img
+    </delete>
+
+    <delete id="deleteItem" parameterType="int">
+        DELETE FROM item_img WHERE ino=#{ino}
+    </delete>
+
+</mapper>

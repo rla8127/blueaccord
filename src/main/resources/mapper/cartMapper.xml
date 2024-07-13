@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.toy.dao.cartMapper">
+
+    <insert id="insert" parameterType="int">
+        INSERT INTO cart
+        (member_id)
+        VALUES
+        (#{member_id})
+    </insert>
+
+    <select id="select" parameterType="int" resultType="CartDto">
+        SELECT *
+        FROM cart
+        WHERE member_id = #{member_id}
+    </select>
+
+    <select id="selectCartId" parameterType="String" resultType="int">
+        SELECT c.cart_id
+        FROM cart AS c
+        JOIN member AS m ON c.member_id = m.member_id
+        WHERE m.id = #{id};
+    </select>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM cart
+        WHERE member_id = #{member_id}
+    </delete>
+
+</mapper>

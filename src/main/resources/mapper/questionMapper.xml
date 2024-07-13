@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.toy.dao.cs.questionMapper">
+
+    <sql id="selectFromQuestion">
+        SELECT q.*, m.name
+        FROM question AS q
+        JOIN member AS m ON q.member_id = m.member_id
+    </sql>
+
+    <sql id="searchCondition">
+        <choose>
+            <when test='option=="T"'>
+                AND title LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test='option=="W"'>
+                AND name LIKE concat('%', #{keyword}, '%')
+            </when>
+            <otherwise>
+                AND (title LIKE concat('%', #{keyword}, '%')
+                OR content LIKE concat('%', #{keyword}, '%'))
+            </otherwise>
+        </choose>
+    </sql>
+
+    <select id="count" resultType="int">
+        SELECT count(*) FROM question
+    </select>
+
+    <delete id="deleteAll">
+        DELETE FROM question
+    </delete>
+
+    <delete id="delete" parameterType="map">
+        DELETE FROM question WHERE question_id = #{question_id} and member_id = #{member_id}
+    </delete>
+
+    <delete id="deleteByAdmin" parameterType="map">
+        DELETE FROM question WHERE question_id = #{question_id}
+    </delete>
+
+    <insert id="insert" parameterType="QuestionDto">
+        INSERT INTO question
+        (title, content, member_id)
+        VALUES
+        (#{title}, #{content}, #{member_id})
+    </insert>
+
+    <select id="selectAll" resultType="QuestionDto">
+        SELECT *
+        FROM question
+        ORDER BY reg_date DESC, question_id DESC
+    </select>
+
+    <select id="select" parameterType="int" resultType="QuestionDto">
+        <include refid="selectFromQuestion"/>
+        WHERE question_id = #{question_id}
+    </select>
+
+    <select id="selectPage" parameterType="map" resultType="QuestionDto">
+        <include refid="selectFromQuestion"/>
+        ORDER BY reg_date DESC, question_id DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <update id="update" parameterType="QuestionDto">
+        UPDATE question
+        SET  title = #{title}
+        , content = #{content}
+        , up_date = now()
+        WHERE question_id = #{question_id} and member_id = #{member_id}
+    </update>
+
+    <update id="increaseViewCnt" parameterType="int">
+        UPDATE question
+        SET   view_cnt = view_cnt + 1
+        WHERE question_id = #{question_id}
+    </update>
+
+    <select id="searchSelectPage" parameterType="SearchCondition" resultType="QuestionDto">
+        <include refid="selectFromQuestion"/>
+        WHERE true
+        <include refid="searchCondition"/>
+        ORDER BY reg_date DESC, question_id DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="searchResultCnt" parameterType="SearchCondition" resultType="int">
+        SELECT count(*)
+        FROM question AS q
+        JOIN member AS m ON q.member_id = m.member_id
+        WHERE true
+        <include refid="searchCondition"/>
+    </select>
+
+
+
+</mapper>

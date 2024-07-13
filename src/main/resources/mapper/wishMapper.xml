@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.toy.dao.wishMapper">
+
+    <insert id="insert" parameterType="map" useGeneratedKeys="true" keyProperty="member_id">
+        INSERT INTO wish
+        (member_id, ino)
+        VALUES
+        (#{member_id}, #{ino})
+    </insert>
+
+    <select id="select" parameterType="map" resultType="WishDto">
+        SELECT *
+        FROM wish
+        WHERE member_id = #{member_id} AND ino = #{ino}
+    </select>
+
+    <select id="selectList" parameterType="int" resultType="WishDto">
+        SELECT * FROM wish WHERE member_id = #{member_id}
+    </select>
+
+    <select id="selectAll" resultType="WishDto">
+        SELECT * FROM wish
+    </select>
+
+    <select id="count" parameterType="int" resultType="int">
+        SELECT count(*) FROM wish WHERE member_id = #{member_id}
+    </select>
+
+    <select id="selectWishList" parameterType="int" resultType="WishListDto">
+        SELECT
+        w.wish_id, i.ino, i.item_nm, i.price, ii.imgUrl AS rep_img_url
+        FROM wish w
+        JOIN
+        item i ON w.ino = i.ino
+        LEFT JOIN
+        item_img ii ON i.ino = ii.ino AND ii.repImgYn = 'y'
+        WHERE
+        member_id = #{member_id};
+    </select>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM wish WHERE wish_id = #{wish_id}
+    </delete>
+
+</mapper>
