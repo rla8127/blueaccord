@@ -34,7 +34,7 @@
 # 개발환경 Development Environment
 * Intellij Community 2024.1.4
 * Visaul Studio Code
-* Apache Tomcat 9
+* Apache Tomcat 9.0.91
 * MySQL WorkBench 8.0
 
 **Architecture**
@@ -47,6 +47,8 @@
 * Haproxy & Keepalived
 * AWS Route 53
 * 홈 서버 32GB liunx - Ubuntu 22.04.4
+* Tomcat 9.0.51
+* Mysql 8.0.37
 * Docker
 * Prometheus & Grafana
 
