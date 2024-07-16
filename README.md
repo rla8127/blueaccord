@@ -27,6 +27,7 @@
 * CSS3
 
 **ERD**
+<br/><br/>
 ![blueaccord db](https://github.com/user-attachments/assets/a2244af2-777c-4d17-acdd-bbf5d051c049)
 
 
@@ -35,6 +36,11 @@
 * Visaul Studio Code
 * Apache Tomcat 9
 * MySQL WorkBench 8.0
+
+**Architecture**
+<br/><br/>
+![server drawio](https://github.com/user-attachments/assets/ddd9924f-a9f7-44f5-8737-3fafa7252e68)
+
 
 # 인프라환경 Infra Environment
 * Oracle Cloud 
