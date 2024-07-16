@@ -28,7 +28,7 @@
 
 **ERD**
 <br/><br/>
-![blueaccord db](https://github.com/user-attachments/assets/a2244af2-777c-4d17-acdd-bbf5d051c049)
+![ERD](https://github.com/user-attachments/assets/9c837121-b371-4149-8278-dc73993a9368)
 
 
 # 개발환경 Development Environment
