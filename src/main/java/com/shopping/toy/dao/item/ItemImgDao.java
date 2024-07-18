@@ -12,11 +12,11 @@ public interface ItemImgDao {
 
     List<ItemImgDto> selectList() throws Exception;
 
-    List<String> selectOriImgName(int ino) throws Exception;
+    List<String> selectOriImgName(int item_id) throws Exception;
 
     List<String> selectRepImg(Category category) throws Exception;
 
-    Boolean selectRepImgYn(int ino) throws Exception;
+    Boolean selectRepImgYn(int item_id) throws Exception;
 
     int insert(ItemImgDto itemImgDto) throws Exception;
 
@@ -26,9 +26,9 @@ public interface ItemImgDao {
 
     int deleteAll() throws Exception;
 
-    int deleteItem(int ino) throws Exception;
+    int deleteItem(int item_id) throws Exception;
 
-    List<ItemImgDto> selectListByIno(int ino) throws Exception;
+    List<ItemImgDto> selectListByItem_id(int item_id) throws Exception;
 
 }
 

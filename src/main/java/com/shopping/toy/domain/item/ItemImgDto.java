@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class ItemImgDto {
 
     private int item_img_no;
-    @NonNull private long ino;
+    @NonNull private long item_id;
     @NonNull private String imgName;
     @NonNull private String oriImgName;
     @NonNull private String imgUrl;

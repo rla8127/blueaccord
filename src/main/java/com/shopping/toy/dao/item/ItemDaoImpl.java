@@ -25,8 +25,8 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public ItemDto select(int ino) throws Exception {
-        return session.selectOne(namespace+"select", ino);
+    public ItemDto select(int item_id) throws Exception {
+        return session.selectOne(namespace+"select", item_id);
     }
 
     @Override
@@ -50,8 +50,8 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public int delete(int ino) throws Exception {
-        return session.delete(namespace+"delete", ino);
+    public int delete(int item_id) throws Exception {
+        return session.delete(namespace+"delete", item_id);
     }
 
     @Override
@@ -60,14 +60,14 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public int getStock(int ino) throws Exception {
-        return session.selectOne(namespace+"getStock", ino);
+    public int getStock(int item_id) throws Exception {
+        return session.selectOne(namespace+"getStock", item_id);
     }
 
     @Override
-    public int stockUpdate(int ino, int count) throws Exception {
+    public int stockUpdate(int item_id, int count) throws Exception {
         Map map = new HashMap();
-        map.put("ino", ino);
+        map.put("item_id", item_id);
         map.put("count", count);
         return session.update(namespace+"stockUpdate", map);
     }

@@ -7,12 +7,12 @@ public class CartItemDto {
 
     private int cart_item_id;
     private int cart_id;
-    private int ino;
+    private int item_id;
     private int count;
 
-    public CartItemDto(int cart_id, int ino, int count) {
+    public CartItemDto(int cart_id, int item_id, int count) {
         this.cart_id = cart_id;
-        this.ino = ino;
+        this.item_id = item_id;
         this.count = count;
     }
 }

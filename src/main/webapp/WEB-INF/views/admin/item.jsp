@@ -108,9 +108,9 @@
                 <h4>상품 기본 정보<span class="star">*</span></h4>
 
                 <div class="input-container">
-                    <p class="input-header">No</p> ${itemDto.ino}
+                    <p class="input-header">No</p> ${itemDto.item_id}
                     <c:if test="${mode ne 'new'}">
-                        <input type="text" name="ino" value="${itemDto.ino}" hidden>
+                        <input type="text" name="item_id" value="${itemDto.item_id}" hidden>
                     </c:if>
                 </div>
 

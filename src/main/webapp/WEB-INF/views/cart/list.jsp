@@ -241,9 +241,9 @@ button:hover {
                     <c:set var="grandTotal" value="${grandTotal + totalPrice}" />
                         <tr class="cart__list__detail">
                             
-                            <td><input type="checkbox" class="checkItem" data-cart_item_id="${cartListDto.cart_item_id}" data-ino="${cartListDto.ino}"></td>
+                            <td><input type="checkbox" class="checkItem" data-cart_item_id="${cartListDto.cart_item_id}" data-item_id="${cartListDto.item_id}"></td>
                             <td><img src="${cartListDto.rep_img_url}" alt="magic keyboard"></td>
-                            <td><a href="<c:url value='/item?ino=${cartListDto.ino}'/>">BLUEACCORD > 선택 상품 바로가기</a>
+                            <td><a href="<c:url value='/item?item_id=${cartListDto.item_id}'/>">BLUEACCORD > 선택 상품 바로가기</a>
                                 <p>${cartListDto.item_nm}</p>
                                 <span class="price" data-price="${cartListDto.price}"><fmt:formatNumber value="${cartListDto.price}" type="number" pattern="#,##0"/>원</span>
                             </td>
@@ -375,14 +375,14 @@ button:hover {
 
           var quantityInput = $(this).siblings('.input-info');
           var count = parseInt(quantityInput.val());
-          var ino = $(this).closest('.cart__list__detail').find('.checkItem').data('ino');
+          var item_id = $(this).closest('.cart__list__detail').find('.checkItem').data('item_id');
 
           if (!isNaN(count) && count >= 0) {
               $.ajax({
                   url: '/cart/update',
                   method: 'PATCH',
                   contentType: 'application/json',
-                  data: JSON.stringify({ ino: ino, count: count }),
+                  data: JSON.stringify({ item_id: item_id, count: count }),
                   success: function(response) {
                       // 성공 처리
                       alert('수량이 업데이트되었습니다.');

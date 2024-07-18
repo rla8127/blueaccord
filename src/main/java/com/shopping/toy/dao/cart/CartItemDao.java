@@ -12,7 +12,7 @@ public interface CartItemDao {
 
     int delete(int cart_item_id);
 
-    CartItemDto selectCartItem(int cart_id, int ino);
+    CartItemDto selectCartItem(int cart_id, int item_id);
 
     List<CartListDto> selectMyCartList(int cart_item_id) throws Exception;
 

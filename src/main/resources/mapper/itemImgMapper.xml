@@ -5,15 +5,15 @@
 <mapper namespace="com.shopping.toy.dao.itemImgMapper">
 
     <sql id="selectFromItemImg">
-        SELECT item_img_no, ino, imgName, oriImgName, imgUrl, repImgYn, reg_date, up_date
+        SELECT item_img_no, item_id, imgName, oriImgName, imgUrl, repImgYn, reg_date, up_date
         FROM item_img
     </sql>
 
     <insert id="insert" parameterType="itemImgDto">
         INSERT INTO item_img
-        (ino, imgName, oriImgName, imgUrl, repImgYn)
+        (item_id, imgName, oriImgName, imgUrl, repImgYn)
         VALUES
-        (#{ino}, #{imgName}, #{oriImgName}, #{imgUrl}, #{repImgYn})
+        (#{item_id}, #{imgName}, #{oriImgName}, #{imgUrl}, #{repImgYn})
     </insert>
 
     <select id="count" resultType="int">
@@ -29,32 +29,32 @@
         WHERE item_img_no = #{item_img_no}
     </select>
 
-    <select id="selectListByIno" parameterType="int" resultType="itemImgDto">
+    <select id="selectListByItem_id" parameterType="int" resultType="itemImgDto">
         <include refid="selectFromItemImg"/>
-        WHERE ino = #{ino}
+        WHERE item_id = #{item_id}
         ORDER BY repImgYn desc
     </select>
 
     <select id="selectOriImgName" parameterType="int" resultType="String">
         SELECT oriImgName
         FROM item_img
-        WHERE ino = {ino}
+        WHERE item_id = {item_id}
         ORDER BY repImgYn desc;
     </select>
 
     <select id="selectRepImgYn" parameterType="int" resultType="Boolean">
         SELECT IF(COUNT(*) = 1, 1, 0)
         FROM item_img
-        WHERE ino = ${ino} AND repImgYn = "Y"
+        WHERE item_id = ${item_id} AND repImgYn = "Y"
     </select>
 
     <select id="selectRepImg" parameterType="Category" resultType="String">
         SELECT img.imgName
         FROM item_img img
         JOIN item i
-        ON i.ino = img.ino
+        ON i.item_id = img.item_id
         WHERE i.category = #{category} AND repImgYn = "Y"
-        ORDER BY i.ino ASC
+        ORDER BY i.item_id ASC
     </select>
 
     <update id="update" parameterType="itemImgDto">
@@ -63,7 +63,7 @@
         , oriImgName = #{oriImgName}
         , repImgYn = #{repImgYn}
         , up_date = now()
-        WHERE ino = #{ino}
+        WHERE item_id = #{item_id}
     </update>
 
     <delete id="delete" parameterType="int">
@@ -75,7 +75,7 @@
     </delete>
 
     <delete id="deleteItem" parameterType="int">
-        DELETE FROM item_img WHERE ino=#{ino}
+        DELETE FROM item_img WHERE item_id=#{item_id}
     </delete>
 
 </mapper>

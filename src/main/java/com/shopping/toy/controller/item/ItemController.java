@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -27,15 +29,18 @@ public class ItemController {
     private final ReviewService reviewService;
 
     @GetMapping
-    public String item(Integer ino, Model m){
+    public String item(HttpServletRequest request, Integer item_id, Model m){
         try {
+            HttpSession session = request.getSession();
+            String id = (String) session.getAttribute("id");
+            m.addAttribute("id", id);
 
             int maxCount = 0;
-            ItemDto itemDto = itemService.read(ino);
+            ItemDto itemDto = itemService.read(item_id);
 
-            List<ReviewDto> reviews = reviewService.getItemReview(ino);
-            double totalRating = reviewService.getRatingAverage(ino);
-            List<RatingCountDto> ratingCounts = reviewService.getRatingCounts(ino);
+            List<ReviewDto> reviews = reviewService.getItemReview(item_id);
+            double totalRating = reviewService.getRatingAverage(item_id);
+            List<RatingCountDto> ratingCounts = reviewService.getRatingCounts(item_id);
 
             for(RatingCountDto ratingCount : ratingCounts){
                 maxCount += ratingCount.getCount();
@@ -47,7 +52,7 @@ public class ItemController {
             m.addAttribute("ratingCounts", ratingCounts);
             m.addAttribute("maxCount", maxCount);
 
-            List<String> imagePaths = itemImgService.getImagePathByIno(itemDto.getIno());
+            List<String> imagePaths = itemImgService.getImagePathByItem_id(itemDto.getItem_id());
             m.addAttribute("imagePaths", imagePaths);
 
         } catch (Exception e) {

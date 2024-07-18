@@ -12,15 +12,15 @@
     </insert>
 
     <insert id="insertOrderItem" parameterType="OrderItemDto">
-        INSERT INTO order_item (order_id, ino, order_price, count)
-        VALUES (#{order_id}, #{ino}, #{order_price}, #{count})
+        INSERT INTO order_item (order_id, item_id, order_price, count)
+        VALUES (#{order_id}, #{item_id}, #{order_price}, #{count})
     </insert>
 
     <select id="getOrderItemList" parameterType="int" resultType="OrderItemListDto">
-        SELECT oi.order_item_id, oi.ino, oi.order_id, i.item_nm, oi.order_price, oi.count, img.imgUrl AS rep_img_url
+        SELECT oi.order_item_id, oi.item_id, oi.order_id, i.item_nm, oi.order_price, oi.count, img.imgUrl AS rep_img_url
         FROM order_item AS oi
-        JOIN item AS i ON oi.ino = i.ino
-        JOIN item_img AS img ON oi.ino = img.ino AND img.repImgYn = 'Y'
+        JOIN item AS i ON oi.item_id = i.item_id
+        JOIN item_img AS img ON oi.item_id = img.item_id AND img.repImgYn = 'Y'
         WHERE order_id=#{order_id}
     </select>
 

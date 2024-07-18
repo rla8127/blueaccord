@@ -14,17 +14,17 @@ public interface ItemDao {
 
     List<CategoryItemDto> getCategoryItems(SearchCondition sc) throws Exception;
 
-    ItemDto select(int ino) throws Exception;
+    ItemDto select(int item_id) throws Exception;
 
     int update(ItemDto itemDto) throws Exception;
 
-    int delete(int ino) throws Exception;
+    int delete(int item_id) throws Exception;
 
     int count() throws Exception;
 
-    int getStock(int ino) throws Exception;
+    int getStock(int item_id) throws Exception;
 
-    int stockUpdate(int ino, int count) throws Exception;
+    int stockUpdate(int item_id, int count) throws Exception;
 
     List<ItemDto> searchSelectPage(SearchCondition sc) throws Exception;
 

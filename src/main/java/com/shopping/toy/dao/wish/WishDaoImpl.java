@@ -18,17 +18,17 @@ public class WishDaoImpl implements WishDao {
     private static String namespace = "com.shopping.toy.dao.wishMapper.";
     
     @Override
-    public int insert(int ino, int member_id) throws Exception{
+    public int insert(int item_id, int member_id) throws Exception{
         Map map = new HashMap();
-        map.put("ino", ino);
+        map.put("item_id", item_id);
         map.put("member_id", member_id);
         return session.insert(namespace+"insert", map);
     }
 
     @Override
-    public WishDto select(int ino, int member_id) throws Exception{
+    public WishDto select(int item_id, int member_id) throws Exception{
         Map map = new HashMap();
-        map.put("ino", ino);
+        map.put("item_id", item_id);
         map.put("member_id", member_id);
         return session.selectOne(namespace+"select", map);
     }

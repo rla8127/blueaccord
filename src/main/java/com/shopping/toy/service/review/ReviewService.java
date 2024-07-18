@@ -10,13 +10,15 @@ public interface ReviewService {
 
     int insert(ReviewDto reviewDto) throws Exception;
 
-    List<ReviewDto> getItemReview(int ino) throws Exception;
+    List<ReviewDto> getItemReview(int item_id) throws Exception;
 
     String toggleHelpful(HelpfulDto helpfulDto) throws Exception;
 
-    double getRatingAverage(int ino) throws Exception;
+    double getRatingAverage(int item_id) throws Exception;
 
-    List<RatingCountDto> getRatingCounts(int ino) throws Exception;
+    List<RatingCountDto> getRatingCounts(int item_id) throws Exception;
 
     int count(String id) throws Exception;
+
+    int delete(int reviewId) throws Exception;
 }

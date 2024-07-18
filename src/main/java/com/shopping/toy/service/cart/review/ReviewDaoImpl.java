@@ -23,16 +23,21 @@ public class ReviewDaoImpl implements ReviewDao {
     }
 
     @Override
-    public int hasReviewed(int ino, String id) throws Exception{
+    public int hasReviewed(int item_id, String id) throws Exception{
         Map map = new HashMap();
-        map.put("ino", ino);
+        map.put("item_id", item_id);
         map.put("reviewer", id);
         return session.selectOne(namespace+"hasReviewed", map);
     }
 
     @Override
-    public List<ReviewDto> getItemReview(int ino) throws Exception{
-        return session.selectList(namespace+"getItemReview", ino);
+    public List<ReviewDto> getItemReview(int item_id) throws Exception{
+        return session.selectList(namespace+"getItemReview", item_id);
+    }
+
+    @Override
+    public int delete(int review_id) throws Exception{
+        return session.delete(namespace+"delete", review_id);
     }
 
     @Override
@@ -46,8 +51,8 @@ public class ReviewDaoImpl implements ReviewDao {
     }
 
     @Override
-    public List<RatingCountDto> getRatingCounts(int ino){
-        return session.selectList(namespace+"getRatingCounts", ino);
+    public List<RatingCountDto> getRatingCounts(int item_id){
+        return session.selectList(namespace+"getRatingCounts", item_id);
     }
 
     @Override

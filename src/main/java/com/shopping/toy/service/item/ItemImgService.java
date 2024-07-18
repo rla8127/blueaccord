@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface ItemImgService {
 
-    List<String> getImagePathByIno(int ino) throws Exception;
+    List<String> getImagePathByItem_id(int item_id) throws Exception;
 
-    List<ItemImgDto> getList(int ino) throws Exception;
+    List<ItemImgDto> getList(int item_id) throws Exception;
 
-    List<String> getOriImgName(int ino) throws Exception;
+    List<String> getOriImgName(int item_id) throws Exception;
 
-    Boolean selectRepImgYn(int ino) throws Exception;
+    Boolean selectRepImgYn(int item_id) throws Exception;
 
     void saveItemImg(ItemImgDto itemImgDto, MultipartFile itemImgFile) throws Exception;
 
@@ -32,5 +32,5 @@ public interface ItemImgService {
 
     int deleteAll() throws Exception;
 
-    int deleteItem(int ino) throws Exception;
+    int deleteItem(int item_id) throws Exception;
 }

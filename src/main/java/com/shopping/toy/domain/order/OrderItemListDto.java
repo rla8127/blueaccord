@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class OrderItemListDto {
     private int order_item_id;
-    private int ino;
+    private int item_id;
     private int order_id;
     private String item_nm;
     private int order_price;

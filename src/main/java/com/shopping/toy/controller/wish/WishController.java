@@ -36,11 +36,11 @@ public class WishController {
 
     @ResponseBody
     @PostMapping
-    public ResponseEntity<String> insert(HttpServletRequest request, @RequestBody int ino, Model m){
+    public ResponseEntity<String> insert(HttpServletRequest request, @RequestBody int item_id, Model m){
         try {
             HttpSession session = request.getSession();
             String id = (String) session.getAttribute("id");
-            wishService.insert(ino, id);
+            wishService.insert(item_id, id);
             return new ResponseEntity<>("OK", HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();

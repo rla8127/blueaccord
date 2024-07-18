@@ -31,17 +31,17 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public int insert(int cart_id, int ino, int count) throws Exception{
-        CartItemDto cartItemDto = new CartItemDto(cart_id, ino, count);
+    public int insert(int cart_id, int item_id, int count) throws Exception{
+        CartItemDto cartItemDto = new CartItemDto(cart_id, item_id, count);
 
-        int stock = itemDao.getStock(ino);
+        int stock = itemDao.getStock(item_id);
         // 만약 현재 상품의 재고수량이, 사용자가 구입하고자 하는 수량보다 적다면
         if(stock < count){
             throw new OutOfStockException("상품의 재고가 부족 합니다. 현재 재고 수량: " + stock + ")");
         }
 
         // 만약 특정 상품을 이미 cart_id에 추가했다면, 개수만 update 한다.
-        if(cartItemDao.selectCartItem(cart_id, ino)!= null) {
+        if(cartItemDao.selectCartItem(cart_id, item_id)!= null) {
             cartItemDao.addUpdate(cartItemDto);
         }
 
@@ -54,16 +54,16 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public int update(int cart_id, int ino, int count) throws Exception{
+    public int update(int cart_id, int item_id, int count) throws Exception{
 
-        int stock = itemDao.getStock(ino);
+        int stock = itemDao.getStock(item_id);
         // 만약 현재 상품의 재고수량이, 사용자가 구입하고자 하는 수량보다 적다면
         if(stock < count){
             throw new OutOfStockException("상품의 재고가 부족 합니다. 현재 재고 수량: " + stock + ")");
         }
 
         else {
-            CartItemDto cartItemDto = new CartItemDto(cart_id, ino, count);
+            CartItemDto cartItemDto = new CartItemDto(cart_id, item_id, count);
             return cartItemDao.update(cartItemDto);
         }
     }

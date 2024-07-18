@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class CategoryItemDto {
-    private int ino;
+    private int item_id;
     private String item_nm;
     private int price;
     private String item_detail;

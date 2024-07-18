@@ -4,6 +4,6 @@ public class WishDto {
 
     private int wish_id;
     private int member_id;
-    private int ino;
+    private int item_id;
 
 }

@@ -197,10 +197,10 @@
                                         <tr>
                                             <th>
                                                 <div class="item-info-left">
-                                                    <a href="<c:url value='/item/product?ino=${item.ino}'/>"><img src="${item.rep_img_url}" alt="이미지"></a>                      
+                                                    <a href="<c:url value='/item/product?item_id=${item.item_id}'/>"><img src="${item.rep_img_url}" alt="이미지"></a>
                                                 </div>
                                                 <div class="item-info-right">
-                                                    <a href="<c:url value='/item/product?ino=${item.ino}'/>"><p>${item.item_nm}</p></a>
+                                                    <a href="<c:url value='/item/product?item_id=${item.item_id}'/>"><p>${item.item_nm}</p></a>
                                                     <p>수량: ${item.count}개</p>
                                                     <p><fmt:formatNumber value="${item.order_price}" type="number" pattern="#,##0"/>원</p>
                                                 </div>

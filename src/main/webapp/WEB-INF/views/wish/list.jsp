@@ -241,9 +241,9 @@ button:hover {
                 <tbody>
                     <c:forEach var="wishListDto" items="${list}">
                         <tr class="wish__list__detail">                           
-                            <td><input type="checkbox" class="checkItem" data-wish_id="${wishListDto.wish_id}" data-ino="${wishListDto.ino}"></td>
+                            <td><input type="checkbox" class="checkItem" data-wish_id="${wishListDto.wish_id}" data-item_id="${wishListDto.item_id}"></td>
                             <td><img src="${wishListDto.rep_img_url}" alt="magic keyboard"></td>
-                            <td><a href="<c:url value='/item?ino=${wishListDto.ino}'/>">BLUEACCORD > 선택 상품 바로가기</a>
+                            <td><a href="<c:url value='/item?item_id=${wishListDto.item_id}'/>">BLUEACCORD > 선택 상품 바로가기</a>
                                 <p>${wishListDto.item_nm}</p>
                                 <span class="price" data-price="${wishListDto.price}"><fmt:formatNumber value="${wishListDto.price}" type="number" pattern="#,##0"/>원</span>
                             </td>
@@ -251,7 +251,7 @@ button:hover {
                                 <p>상품명 : ${wishListDto.item_nm} </p>
                             </td>
                             <td><span class="totalprice"><fmt:formatNumber value="${wishListDto.price}" type="number" pattern="#,##0"/>원</span><br>
-                                <button class="cartSaveBtn" data-ino="${wishListDto.ino}">장바구니</button>
+                                <button class="cartSaveBtn" data-item_id="${wishListDto.item_id}">장바구니</button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -315,10 +315,10 @@ button:hover {
   $(".cartSaveBtn").click(function(event){
     event.preventDefault();
 
-    var ino = this.getAttribute('data-ino');
+    var item_id = this.getAttribute('data-item_id');
     var count = 1;
         
-    $.post('/cart/add', { ino: ino, count: count })
+    $.post('/cart/add', { item_id: item_id, count: count })
         .done(function(response) {
             alert('장바구니에 추가되었습니다');
         })

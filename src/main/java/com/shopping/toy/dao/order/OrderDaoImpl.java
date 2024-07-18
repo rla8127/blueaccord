@@ -17,8 +17,8 @@ public class OrderDaoImpl implements OrderDao {
     private static String namespace = "com.shopping.toy.dao.orderMapper.";
 
     @Override
-    public OrderItemListDto selectItem(int ino) throws Exception{
-        return session.selectOne(namespace+"selectOrderRequest", ino);
+    public OrderItemListDto selectItem(int item_id) throws Exception{
+        return session.selectOne(namespace+"selectOrderRequest", item_id);
     }
 
     @Override

@@ -6,15 +6,15 @@
 
     <insert id="insert" parameterType="map" useGeneratedKeys="true" keyProperty="member_id">
         INSERT INTO wish
-        (member_id, ino)
+        (member_id, item_id)
         VALUES
-        (#{member_id}, #{ino})
+        (#{member_id}, #{item_id})
     </insert>
 
     <select id="select" parameterType="map" resultType="WishDto">
         SELECT *
         FROM wish
-        WHERE member_id = #{member_id} AND ino = #{ino}
+        WHERE member_id = #{member_id} AND item_id = #{item_id}
     </select>
 
     <select id="selectList" parameterType="int" resultType="WishDto">
@@ -31,12 +31,12 @@
 
     <select id="selectWishList" parameterType="int" resultType="WishListDto">
         SELECT
-        w.wish_id, i.ino, i.item_nm, i.price, ii.imgUrl AS rep_img_url
+        w.wish_id, i.item_id, i.item_nm, i.price, ii.imgUrl AS rep_img_url
         FROM wish w
         JOIN
-        item i ON w.ino = i.ino
+        item i ON w.item_id = i.item_id
         LEFT JOIN
-        item_img ii ON i.ino = ii.ino AND ii.repImgYn = 'y'
+        item_img ii ON i.item_id = ii.item_id AND ii.repImgYn = 'y'
         WHERE
         member_id = #{member_id};
     </select>

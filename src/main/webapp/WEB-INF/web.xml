@@ -27,6 +27,11 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
 
+  <error-page>
+      <error-code>403</error-code>
+      <location>/WEB-INF/views/error/error403.jsp</location>
+  </error-page>
+
   <servlet-mapping>
     <servlet-name>appServlet</servlet-name>
     <url-pattern>/</url-pattern>

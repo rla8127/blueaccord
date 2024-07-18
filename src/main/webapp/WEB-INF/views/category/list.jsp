@@ -165,7 +165,7 @@
             <ul class="item-card">
                 <c:forEach var="categoryItem" items="${categoryItems}">
                     <li class="item">
-                        <a href="<c:url value='/item?ino=${categoryItem.ino}'/>">
+                        <a href="<c:url value='/item?item_id=${categoryItem.item_id}'/>">
                             <img src="${pageContext.request.contextPath}${categoryItem.repImgUrl}" alt="BlueAccord"/></img>
                         </a>
                         <div class="item-info">

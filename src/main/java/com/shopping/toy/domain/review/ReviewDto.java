@@ -7,7 +7,7 @@ import java.sql.Date;
 @Data
 public class ReviewDto {
     private int review_id;
-    private int ino;
+    private int item_id;
     private String reviewer;
     private int rating;
     private String review_content;

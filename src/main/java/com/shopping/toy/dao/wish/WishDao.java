@@ -6,9 +6,9 @@ import com.shopping.toy.domain.wish.WishListDto;
 import java.util.List;
 
 public interface WishDao {
-    int insert(int ino, int member_id) throws Exception;
+    int insert(int item_id, int member_id) throws Exception;
 
-    WishDto select(int ino, int member_id) throws Exception;
+    WishDto select(int item_id, int member_id) throws Exception;
 
 //    List<WishDto> selectList(int member_id) throws Exception;
 

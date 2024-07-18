@@ -21,7 +21,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public int insert(ReviewDto reviewDto) throws Exception{
-        int hasReviewed = reviewDao.hasReviewed(reviewDto.getIno(), reviewDto.getReviewer());
+        int hasReviewed = reviewDao.hasReviewed(reviewDto.getItem_id(), reviewDto.getReviewer());
 
         if(hasReviewed == 1){
             throw new Exception("이미 해당 상품에 리뷰를 작성했습니다.");
@@ -32,13 +32,13 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<ReviewDto> getItemReview(int ino) throws Exception{
-        return reviewDao.getItemReview(ino);
+    public List<ReviewDto> getItemReview(int item_id) throws Exception{
+        return reviewDao.getItemReview(item_id);
     }
 
     @Override
-    public double getRatingAverage(int ino) throws Exception{
-        List<ReviewDto> reviews = reviewDao.getItemReview(ino);
+    public double getRatingAverage(int item_id) throws Exception{
+        List<ReviewDto> reviews = reviewDao.getItemReview(item_id);
 
         if (reviews == null || reviews.isEmpty()) {
             return 0.0;
@@ -50,6 +50,11 @@ public class ReviewServiceImpl implements ReviewService {
         }
 
         return totalRating / reviews.size();
+    }
+
+    @Override
+    public int delete(int review_id) throws Exception{
+        return reviewDao.delete(review_id);
     }
 
     @Override
@@ -71,8 +76,8 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<RatingCountDto> getRatingCounts(int ino) throws Exception{
-        return reviewDao.getRatingCounts(ino);
+    public List<RatingCountDto> getRatingCounts(int item_id) throws Exception{
+        return reviewDao.getRatingCounts(item_id);
     }
 
     @Override

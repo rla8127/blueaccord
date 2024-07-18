@@ -7,7 +7,7 @@ public class CartListDto {
 
     private int cart_id;
     private int cart_item_id;
-    private int ino;
+    private int item_id;
     private String item_nm;
     private int price;
     private int count;

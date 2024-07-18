@@ -30,7 +30,7 @@ public class ItemServiceImpl implements ItemService {
         // 이미지 등록
         for(int i=0; i<itemImgFileList.size(); i++){
             ItemImgDto itemImgDto = new ItemImgDto();
-            itemImgDto.setIno(itemDto.getIno());
+            itemImgDto.setItem_id(itemDto.getItem_id());
             if(i == 0)
                 itemImgDto.setRepImgYn("Y");
             else
@@ -38,7 +38,7 @@ public class ItemServiceImpl implements ItemService {
             itemImgService.saveItemImg(itemImgDto, itemImgFileList.get(i));
         }
 
-        return itemDto.getIno();
+        return itemDto.getItem_id();
     }
 
     // 상품의 총 개수
@@ -65,8 +65,8 @@ public class ItemServiceImpl implements ItemService {
 
     // 상품 조회
     @Override
-    public ItemDto read(Integer ino) throws Exception {
-        ItemDto itemDto = itemDao.select(ino);
+    public ItemDto read(Integer item_id) throws Exception {
+        ItemDto itemDto = itemDao.select(item_id);
         return itemDto;
     }
 
@@ -82,10 +82,10 @@ public class ItemServiceImpl implements ItemService {
         // 이미지 등록
         for(int i=0; i<itemImgFileList.size(); i++){
             ItemImgDto itemImgDto = new ItemImgDto();
-            itemImgDto.setIno(itemDto.getIno());
+            itemImgDto.setItem_id(itemDto.getItem_id());
 
             // 대표이미지가 삭제될 수도 있으니, 무조건 첫 번째 이미지는 대표 이미지, 또한 대표 이미지를 갖고 있는지도 검사함.
-            if(i == 0 && !itemImgService.selectRepImgYn((int) itemDto.getIno()))
+            if(i == 0 && !itemImgService.selectRepImgYn((int) itemDto.getItem_id()))
                 itemImgDto.setRepImgYn("Y");
 
             // 추가된 이미지도 있으니, N으로 설정
@@ -98,8 +98,8 @@ public class ItemServiceImpl implements ItemService {
 
     // 상품 삭제
     @Override
-    public int remove(Integer ino) throws Exception {
-        return itemDao.delete(ino);
+    public int remove(Integer item_id) throws Exception {
+        return itemDao.delete(item_id);
     }
 
     @Override

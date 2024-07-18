@@ -21,13 +21,13 @@ public interface ItemService {
     List<CategoryItemDto> getSearchItems(SearchCondition sc) throws Exception;
 
     // 상품 조회
-    ItemDto read(Integer ino) throws Exception;
+    ItemDto read(Integer item_id) throws Exception;
 
     // 상품 수정
     int modify(ItemDto itemDto, List<MultipartFile> itemImgFileList) throws Exception;
 
     // 상품 삭제
-    int remove(Integer ino) throws Exception;
+    int remove(Integer item_id) throws Exception;
 
     List<ItemDto> searchSelectPage(SearchCondition sc) throws Exception;
 

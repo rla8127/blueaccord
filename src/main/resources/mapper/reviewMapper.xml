@@ -5,19 +5,23 @@
 <mapper namespace="com.shopping.toy.dao.reviewMapper">
 
     <insert id="insert" parameterType="ReviewDto" useGeneratedKeys="true" keyProperty="review_id">
-        INSERT INTO reviews (ino, reviewer, rating, review_content)
-        values (#{ino}, #{reviewer}, #{rating}, #{review_content})
+        INSERT INTO reviews (item_id, reviewer, rating, review_content)
+        values (#{item_id}, #{reviewer}, #{rating}, #{review_content})
     </insert>
 
     <select id="hasReviewed" parameterType="map" resultType="int">
         SELECT count(*)
         FROM reviews
-        WHERE ino=#{ino} AND reviewer=#{reviewer}
+        WHERE item_id=#{item_id} AND reviewer=#{reviewer}
     </select>
 
     <select id="getItemReview" parameterType="int" resultType="ReviewDto">
-        SELECT * FROM reviews WHERE ino=#{ino}
+        SELECT * FROM reviews WHERE item_id=#{item_id}
     </select>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM reviews WHERE review_id = #{review_id}
+    </delete>
 
     <update id="IncreaseHelpful" parameterType="int">
         UPDATE reviews SET helpful = helpful + 1 WHERE review_id=#{review_id}
@@ -30,7 +34,7 @@
     <select id="getRatingCounts" parameterType="int" resultType="RatingCountDto">
         SELECT rating, COUNT(*) AS count
         FROM reviews
-        WHERE ino = #{ino}
+        WHERE item_id = #{item_id}
         GROUP BY rating
     </select>
 

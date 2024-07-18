@@ -40,13 +40,13 @@ public class OrderServiceImpl implements OrderService {
             CartListDto cartListDto = cartItemDao.selectMyCart(cartItemId);
 
             orderItemDto.setOrder_id(order_id);
-            orderItemDto.setIno(cartListDto.getIno());
+            orderItemDto.setItem_id(cartListDto.getItem_id());
             orderItemDto.setCount(cartListDto.getCount());
             orderItemDto.setOrder_price(cartListDto.getPrice());
             orderDao.insertOrderItem(orderItemDto);
 
             // 재고수량 감소
-            itemDao.stockUpdate(cartListDto.getIno(), -cartListDto.getCount());
+            itemDao.stockUpdate(cartListDto.getItem_id(), -cartListDto.getCount());
 
             //장바구니 삭제
             cartItemDao.delete(cartItemId);

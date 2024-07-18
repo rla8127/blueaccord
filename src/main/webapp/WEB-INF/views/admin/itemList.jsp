@@ -184,8 +184,8 @@
                     <th>수정일</th>
             <c:forEach var="itemDto" items="${list}">
                 <tr>
-                    <td>${itemDto.ino}</td>
-                    <td><a href="<c:url value="/admin/item/read${ph.sc.queryString}&ino=${itemDto.ino}"/>">${itemDto.item_nm}</a></td>
+                    <td>${itemDto.item_id}</td>
+                    <td><a href="<c:url value="/admin/item/read${ph.sc.queryString}&item_id=${itemDto.item_id}"/>">${itemDto.item_nm}</a></td>
                     <td>${itemDto.stock}</td>
                     <td>${itemDto.category}</td>
                     <td>${itemDto.sell_status}</td>

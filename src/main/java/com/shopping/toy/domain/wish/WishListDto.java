@@ -6,7 +6,7 @@ import lombok.Data;
 public class WishListDto {
 
     private int wish_id;
-    private int ino;
+    private int item_id;
     private String item_nm;
     private int price;
     private String rep_img_url;

@@ -53,13 +53,13 @@ public class AdminItemController {
     }
 
     @GetMapping(value = "/read")
-    public String itemRead(int ino, Integer page, Integer pageSize, Model m){
+    public String itemRead(int item_id, Integer page, Integer pageSize, Model m){
         try {
             // 상품 데이터 전달
-            ItemDto itemDto = itemService.read(ino);
+            ItemDto itemDto = itemService.read(item_id);
             m.addAttribute(itemDto);
 
-            List<ItemImgDto> itemImgDtoList = itemImgService.getList(ino);
+            List<ItemImgDto> itemImgDtoList = itemImgService.getList(item_id);
             m.addAttribute(itemImgDtoList);
 
         } catch (Exception e) {
@@ -79,7 +79,7 @@ public class AdminItemController {
             return "item/item";
         }
 
-        //  && itemDto.getIno() == 0 이게 있어야 할 이유는 모르겠음 아직
+        //  && itemDto.getItem_id() == 0 이게 있어야 할 이유는 모르겠음 아직
         if(itemImgFileList.get(0).isEmpty()){
             System.out.println("size는" + itemImgFileList.size());
             m.addAttribute("errorMessage", "첫번째 상품 이미지는 필수 입력 값입니다.");
@@ -117,9 +117,9 @@ public class AdminItemController {
     }
 
     @PostMapping("/delete")
-    public String delete(Integer ino, Integer page, Integer pageSize, Model m) {
+    public String delete(Integer item_id, Integer page, Integer pageSize, Model m) {
         try {
-            int rowCnt = itemService.remove(ino);
+            int rowCnt = itemService.remove(item_id);
 
             m.addAttribute("page", page);
             m.addAttribute("pageSize", pageSize);

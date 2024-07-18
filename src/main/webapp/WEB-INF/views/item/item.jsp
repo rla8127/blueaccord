@@ -311,6 +311,14 @@
         font-size: 16px;
     }
 
+    #delReviewBtn{
+        width: 50px;
+        height: 35px;
+        background-color: white;
+        border: 1px solid #a1a1a1;
+        font-size: 16px;
+    }
+
     .input-info::-webkit-outer-spin-button,
     .input-info::-webkit-inner-spin-button{
     -webkit-appearance: none;
@@ -353,7 +361,7 @@
 </head>
 <body>
     <c:set var="calculatedPrice" value="${itemDto.price  * 0.01}" />
-    <c:set var="ino" value="${param.ino}" />
+    <c:set var="item_id" value="${param.item_id}" />
 
     <div class="container">
         <div class="product-detail-box">
@@ -411,7 +419,7 @@
                     <button type="button" class="cartBtn left-button">CART</button>
                     
                     <form id="orderForm" method="post" action="/order" style="display:none;">
-                        <input type="hidden" name="ino" id="formIno" />
+                        <input type="hidden" name="item_id" id="formItem_id" />
                         <input type="hidden" name="count" id="formCount" />
                     </form>
                     <button type="button" class="buyBtn">BUY IT</button>
@@ -516,6 +524,7 @@
                 <div class="review-content">${review.review_content}</div>
                 <div class="helpful">
                     <button class="helpfulBtn" data-review-id="${review.review_id}">도움이 돼요</button>
+                    <c:if test="${id == review.reviewer}"><button id="delReviewBtn" data-review-id="${review.review_id}">삭제</button></c:if>
                     <span class="helpful-count">${review.helpful}</span>명에게 도움이 되었습니다.
                 </div>
             </div>
@@ -526,7 +535,7 @@
 <%@ include file = "../common/footer.jsp" %>
 <script>
     var itemPrice = <c:out value="${itemDto.price}" />;
-    var ino = <c:out value="${ino}" />; // JSP에서 ino 값을 가져옵니다
+    var item_id = <c:out value="${item_id}" />; // JSP에서 item_id 값을 가져옵니다
 
     $('#reviewWriteBtn').click(function() {
         $('.write-review-container').show();
@@ -555,7 +564,7 @@
         var reviewDto = {
             rating: rating,
             review_content: reviewContent,
-            ino: ino
+            item_id: item_id
         };
 
         $.ajax({
@@ -603,14 +612,34 @@
 
     });
 
+    $('#delReviewBtn').click(function() {
+       var review_id = $(this).data("review-id");
+       const reviewContainer = $(this).closest('.user-review-container');
+       
+       $.ajax({
+            url: '/review/delete',
+            method: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(review_id),
+            success: function(response) {
+                alert('리뷰를 삭제했습니다.');        
+                reviewContainer.remove(); 
+            },
+            error: function(xhr, status, error) {
+                alert('에러');
+                console.log(error);
+            }
+       })
+    });
+
     $('.wishBtn').click(function() {
-        var ino = <c:out value="${ino}" />; // JSP에서 ino 값을 가져옵니다
+        var item_id = <c:out value="${item_id}" />; // JSP에서 item_id 값을 가져옵니다
         
         $.ajax({
               url: '/wish',
               method: 'POST',
               contentType: 'application/json',
-              data: JSON.stringify(ino),
+              data: JSON.stringify(item_id),
               success: function(response) {
                   // 성공 처리 - 예를 들어, 페이지 새로고침 또는 DOM에서 삭제된 항목 제거
                   alert('관심상품이 등록되었습니다.');
@@ -624,10 +653,10 @@
     });
 
     $('.buyBtn').click(function() {
-        var ino = <c:out value="${ino}" />;
+        var item_id = <c:out value="${item_id}" />;
         var count = $('#quantity').val();
 
-        console.log("ino = " + ino);
+        console.log("item_id = " + item_id);
         console.log("count = " + count);
 
         if (count < 1) {
@@ -635,7 +664,7 @@
             return;
         }
 
-        $.post('/cart/add', { ino: ino, count: count })
+        $.post('/cart/add', { item_id: item_id, count: count })
             .done(function(response) {
                 if (response.status === 'OK') {
                     alert('장바구니에 추가되었습니다.');
@@ -657,8 +686,8 @@
     
 
     $('.cartBtn').click(function() {
-    // ino와 count 값을 설정합니다.
-    var ino = <c:out value="${ino}" />;
+    // item_id와 count 값을 설정합니다.
+    var item_id = <c:out value="${item_id}" />;
     var count = $('#quantity').val();  
 
     // count 값이 1일 경우 경고 메시지 표시
@@ -666,7 +695,7 @@
         alert("수량을 1개 이상 선택해주세요.");
     } else {
         // count 값이 1 이상일 경우에만 POST 요청을 보냅니다.
-        $.post('/cart/add', { ino: ino, count: count })
+        $.post('/cart/add', { item_id: item_id, count: count })
             .done(function(response) {
                 alert('장바구니에 추가되었습니다: ' + response);
             })
@@ -675,6 +704,8 @@
             });
         }
     });
+
+ 
 
     function updateBuyList(quantity) {
         var totalPrice = itemPrice * quantity;

@@ -6,7 +6,7 @@ import com.shopping.toy.domain.wish.WishListDto;
 import java.util.List;
 
 public interface WishService {
-    int insert(int ino, String id) throws Exception;
+    int insert(int item_id, String id) throws Exception;
 
     int count(int member_id) throws Exception;
 

@@ -27,16 +27,16 @@ public class ItemImgServiceImpl implements ItemImgService {
     String itemImgLocation; // private 적합성
 
     @Override
-    public List<String> getOriImgName(int ino) throws Exception{
+    public List<String> getOriImgName(int item_id) throws Exception{
 
-        List<String> imgNameList = itemImgDao.selectOriImgName(ino);
+        List<String> imgNameList = itemImgDao.selectOriImgName(item_id);
         return imgNameList;
     }
 
     @Override
-    public List<String> getImagePathByIno(int ino) throws Exception{
+    public List<String> getImagePathByItem_id(int item_id) throws Exception{
 
-        List<ItemImgDto> list = itemImgDao.selectListByIno(ino);
+        List<ItemImgDto> list = itemImgDao.selectListByItem_id(item_id);
         List<String> imgUrlList = new ArrayList<>();
 
         for(ItemImgDto itemImg : list){
@@ -47,8 +47,8 @@ public class ItemImgServiceImpl implements ItemImgService {
     }
 
     @Override
-    public List<ItemImgDto> getList(int ino) throws Exception{
-        return itemImgDao.selectListByIno(ino);
+    public List<ItemImgDto> getList(int item_id) throws Exception{
+        return itemImgDao.selectListByItem_id(item_id);
     }
 
     @Override
@@ -84,8 +84,8 @@ public class ItemImgServiceImpl implements ItemImgService {
     }
 
     @Override
-    public Boolean selectRepImgYn(int ino) throws Exception{
-        return itemImgDao.selectRepImgYn(ino);
+    public Boolean selectRepImgYn(int item_id) throws Exception{
+        return itemImgDao.selectRepImgYn(item_id);
     }
 
     @Override
@@ -109,7 +109,7 @@ public class ItemImgServiceImpl implements ItemImgService {
     }
 
     @Override
-    public int deleteItem(int ino) throws Exception {
-        return itemImgDao.deleteItem(ino);
+    public int deleteItem(int item_id) throws Exception {
+        return itemImgDao.deleteItem(item_id);
     }
 }

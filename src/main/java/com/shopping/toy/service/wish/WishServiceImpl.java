@@ -19,14 +19,14 @@ public class WishServiceImpl implements WishService {
     MemberDao memberDao;
 
     @Override
-    public int insert(int ino, String id) throws Exception{
+    public int insert(int item_id, String id) throws Exception{
 
         int member_id = memberDao.selectMemberId(id);
         // 만약 이미 관심상품에 등록되었을 경우,
-        if(wishDao.select(ino, member_id)!=null){
+        if(wishDao.select(item_id, member_id)!=null){
             return 0;
         }
-        return wishDao.insert(ino, member_id);
+        return wishDao.insert(item_id, member_id);
     }
 
     @Override

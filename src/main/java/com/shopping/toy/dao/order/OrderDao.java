@@ -9,7 +9,7 @@ import java.util.List;
 public interface OrderDao {
 
     int insert(OrderDto orderDto) throws Exception;
-    OrderItemListDto selectItem(int ino) throws Exception;
+    OrderItemListDto selectItem(int item_id) throws Exception;
     int insertOrderItem(OrderItemDto orderItemDto) throws Exception;
     List<OrderItemDto> getOrderItems(int order_id) throws Exception;
     List<OrderItemListDto> getOrderItemList(int order_id) throws Exception;

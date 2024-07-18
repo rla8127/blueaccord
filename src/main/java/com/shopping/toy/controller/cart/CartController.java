@@ -24,13 +24,13 @@ public class CartController {
 
     @ResponseBody
     @PostMapping("/add")
-    public ResponseEntity<Map<String, Object>> AddCart(HttpServletRequest request, int ino, int count, Model m) {
+    public ResponseEntity<Map<String, Object>> AddCart(HttpServletRequest request, int item_id, int count, Model m) {
         HttpSession session = request.getSession();
         String id = (String) session.getAttribute("id");
         int cart_id = cartService.getCartId(id);
 
         try {
-            int cartItemId = cartService.insert(cart_id, ino, count);
+            int cartItemId = cartService.insert(cart_id, item_id, count);
             System.out.println("cartItemId = " + cartItemId);
 
             Map<String, Object> response = new HashMap<>();
@@ -96,7 +96,7 @@ public class CartController {
         // Cart_id, Item_id, count를 Cart_item 생성자 인자로 넘겨줌
         // Cart_item insert Service 호출
         try {
-            cartService.update(cart_id, cartLstDto.getIno(), cartLstDto.getCount());
+            cartService.update(cart_id, cartLstDto.getItem_id(), cartLstDto.getCount());
             return new ResponseEntity<>("OK", HttpStatus.OK);
 
         } catch (Exception e) {

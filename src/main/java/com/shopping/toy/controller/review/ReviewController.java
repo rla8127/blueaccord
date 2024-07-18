@@ -8,10 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -38,6 +35,21 @@ public class ReviewController {
             e.printStackTrace();
             String errorMsg = e.getMessage();
             m.addAttribute("errorMsg", errorMsg);
+            return new ResponseEntity<>(errorMsg, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @ResponseBody
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> delete(HttpServletRequest request, @RequestBody int review_id){
+        HttpSession session = request.getSession();
+        String id = (String) session.getAttribute("id");
+        try {
+            reviewService.delete(review_id);
+            return new ResponseEntity<>("OK", HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            String errorMsg = e.getMessage();
             return new ResponseEntity<>(errorMsg, HttpStatus.BAD_REQUEST);
         }
     }

@@ -28,9 +28,9 @@ public class CartItemDaoImpl implements CartItemDao {
     }
 
     @Override
-    public CartItemDto selectCartItem(int cart_id, int ino){
+    public CartItemDto selectCartItem(int cart_id, int item_id){
         Map map = new HashMap();
-        map.put("ino", ino);
+        map.put("item_id", item_id);
         map.put("cart_id", cart_id);
         return session.selectOne(namespace+"selectCartItem", map);
     }

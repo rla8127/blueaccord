@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class ItemDto {
 
-    private int ino;
+    private int item_id;
     private String item_nm;
     private int price;
     private int stock;

@@ -36,13 +36,13 @@ public class ItemImgDaoImpl implements ItemImgDao {
     }
 
     @Override
-    public List<ItemImgDto> selectListByIno(int ino) throws Exception {
-        return session.selectList(namespace+"selectListByIno", ino);
+    public List<ItemImgDto> selectListByItem_id(int item_id) throws Exception {
+        return session.selectList(namespace+"selectListByItem_id", item_id);
     }
 
     @Override
-    public List<String> selectOriImgName(int ino) throws Exception {
-        return session.selectList(namespace+"selectOriImgName", ino);
+    public List<String> selectOriImgName(int item_id) throws Exception {
+        return session.selectList(namespace+"selectOriImgName", item_id);
     }
 
     @Override
@@ -51,8 +51,8 @@ public class ItemImgDaoImpl implements ItemImgDao {
     }
 
     @Override
-    public Boolean selectRepImgYn(int ino) throws Exception {
-        return session.selectOne(namespace+"selectRepImgYn", ino);
+    public Boolean selectRepImgYn(int item_id) throws Exception {
+        return session.selectOne(namespace+"selectRepImgYn", item_id);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class ItemImgDaoImpl implements ItemImgDao {
     }
 
     @Override
-    public int deleteItem(int ino) throws Exception {
-        return session.delete(namespace+"deleteItem", ino);
+    public int deleteItem(int item_id) throws Exception {
+        return session.delete(namespace+"deleteItem", item_id);
     }
 }
