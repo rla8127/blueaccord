@@ -5,7 +5,7 @@
 <mapper namespace="com.shopping.toy.dao.itemImgMapper">
 
     <sql id="selectFromItemImg">
-        SELECT item_img_no, item_id, imgName, oriImgName, imgUrl, repImgYn, reg_date, up_date
+        SELECT item_img_no, item_id, imgName, oriImgName, imgUrl, repImgYn, reg_date
         FROM item_img
     </sql>
 
@@ -62,7 +62,6 @@
         SET imgName = #{imgName}
         , oriImgName = #{oriImgName}
         , repImgYn = #{repImgYn}
-        , up_date = now()
         WHERE item_id = #{item_id}
     </update>
 

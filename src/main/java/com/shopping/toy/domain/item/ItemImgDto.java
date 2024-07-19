@@ -17,7 +17,6 @@ public class ItemImgDto {
     @NonNull private String imgUrl;
     private String repImgYn;
     private LocalDateTime reg_date;
-    private LocalDateTime up_date;
 
     public void updateItemImg(String oriImgName, String imgName, String imgUrl){
         this.oriImgName = oriImgName;
