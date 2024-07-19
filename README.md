@@ -37,7 +37,6 @@
 * Apache Tomcat 9.0.91
 * MySQL WorkBench 8.0
 
-**Architecture**
 <br/><br/>
 
 # 인프라환경 Infra Environment
