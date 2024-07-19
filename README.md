@@ -37,10 +37,7 @@
 * Apache Tomcat 9.0.91
 * MySQL WorkBench 8.0
 
-**Architecture**
 <br/><br/>
-![server drawio](https://github.com/user-attachments/assets/ddd9924f-a9f7-44f5-8737-3fafa7252e68)
-
 
 # 인프라환경 Infra Environment
 * Oracle Cloud 
@@ -51,6 +48,11 @@
 * Mysql 8.0.37
 * Docker
 * Prometheus & Grafana
+* Jenkins (CI/CD)
+
+**Architecture**
+<br/><br/>
+![server drawio](https://github.com/user-attachments/assets/7aa556f7-2a7d-47d6-820b-7585e33d30af)
 
 # 연락 Contact
 해당 프로젝트에 대한 이슈를 생성하고 싶거나 연락하고 싶다면 아래로 연락해주세요.<br/>
