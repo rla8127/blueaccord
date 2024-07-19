@@ -49,6 +49,7 @@
 * Mysql 8.0.37
 * Docker
 * Prometheus & Grafana
+* Jenkins (CI/CD)
 **Architecture**
 <br/><br/>
 ![server drawio](https://github.com/user-attachments/assets/7aa556f7-2a7d-47d6-820b-7585e33d30af)
