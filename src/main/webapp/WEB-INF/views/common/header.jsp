@@ -2,9 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <c:set var="loginOutLink" value="${sessionScope.id==null ? '/login' : '/logout'}"/>
-<c:set var="cartLink" value="${sessionScope.id==null ? '/login' : '/cart/list'}"/>
-<c:set var="myPageLink" value="${sessionScope.id==null ? '/login' : '/mypage'}"/>
-<c:set var="wishLink" value="${sessionScope.id==null ? '/login' : '/wish/list'}"/>
+<c:set var="cartLink" value="${sessionScope.id==null ? '/login?toURL=/cart/list' : '/cart/list'}"/>
+<c:set var="myPageLink" value="${sessionScope.id==null ? '/login?toURL=/mypage' : '/mypage'}"/>
+<c:set var="wishLink" value="${sessionScope.id==null ? '/login?toURL=/wish/list' : '/wish/list'}"/>
+<c:set var="orderLink" value="${sessionScope.id==null ? '/login?toURL=/mypage/order' : '/mypage/order'}"/>
 <c:set var="loginOut" value="${sessionScope.id==null ? '로그인' : '로그아웃'}"/>
 <c:set var="loginOut" value="${sessionScope.id==null ? '로그인' : '로그아웃'}"/>
 <c:set var="wishCount" value="${sessionScope.id==null ? '로그인' : '로그아웃'}"/>
@@ -43,7 +44,7 @@
                         <a href="/register/add"><li>회원가입</li></a>
                     </c:if>
                     <li><a href="<c:url value='${loginOutLink}'/>">${loginOut}</a></li>
-                    <a href="${wishLink}"><li>주문조회</li></a>
+                    <a href="${orderLink}"><li>주문조회</li></a>
                     <a href="/cs/question/list"><li>고객센터</li></a>
                     <a href="<c:url value='/admin/item/list'/>"><li>관리자페이지</li></a>
                 </ul>
