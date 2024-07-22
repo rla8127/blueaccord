@@ -4,7 +4,6 @@ import com.shopping.toy.domain.review.RatingCountDto;
 import com.shopping.toy.domain.review.ReviewDto;
 
 import java.util.List;
-import java.util.Map;
 
 public interface ReviewDao {
     int insert(ReviewDto reviewDto) throws Exception;

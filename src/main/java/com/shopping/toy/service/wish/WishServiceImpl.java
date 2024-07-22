@@ -6,7 +6,6 @@ import com.shopping.toy.domain.wish.WishListDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.security.auth.login.LoginException;
 import java.util.List;
 
 @Service

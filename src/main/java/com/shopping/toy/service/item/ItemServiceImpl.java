@@ -1,6 +1,5 @@
 package com.shopping.toy.service.item;
 
-import com.shopping.toy.constant.Category;
 import com.shopping.toy.dao.item.ItemDao;
 import com.shopping.toy.domain.item.CategoryItemDto;
 import com.shopping.toy.domain.item.ItemDto;

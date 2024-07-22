@@ -1,6 +1,5 @@
 package com.shopping.toy.service.item;
 
-import com.shopping.toy.constant.Category;
 import com.shopping.toy.domain.item.ItemImgDto;
 import org.springframework.web.multipart.MultipartFile;
 

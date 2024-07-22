@@ -1,6 +1,5 @@
 package com.shopping.toy.service.wish;
 
-import com.shopping.toy.domain.wish.WishDto;
 import com.shopping.toy.domain.wish.WishListDto;
 
 import java.util.List;

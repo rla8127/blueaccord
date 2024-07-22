@@ -71,7 +71,6 @@ public class ItemController {
             PageHandler ph = new PageHandler(totalCnt, sc);
             m.addAttribute("totalCnt", totalCnt);
             m.addAttribute("categoryItems", categoryItems);
-
             m.addAttribute("sc", sc);
             m.addAttribute("ph", ph);
 

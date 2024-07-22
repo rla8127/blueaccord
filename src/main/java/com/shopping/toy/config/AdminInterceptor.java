@@ -1,7 +1,6 @@
 package com.shopping.toy.config;
 
 import com.shopping.toy.constant.Role;
-import com.shopping.toy.domain.member.MemberDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

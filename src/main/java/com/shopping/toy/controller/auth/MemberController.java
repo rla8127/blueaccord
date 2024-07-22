@@ -1,7 +1,6 @@
 package com.shopping.toy.controller.auth;
 
 import com.shopping.toy.domain.member.MemberDto;
-import com.shopping.toy.service.auth.AuthService;
 import com.shopping.toy.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
