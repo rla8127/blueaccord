@@ -195,14 +195,15 @@
                 <div class="my-left-container">
                     <ul>
                         <li class="li-header">나의 정보</li>
-                        <a href="/mypage"><li>마이 페이지</li></a>
-                        <a href="/wish/list"><li>위시리스트</li></a>
-                        <a href="/cart/list"><li>장바구니</li></a>
-                        <a href="/mypage/member/modify"><li>회원 정보 수정</li></a>
-                        <a href="/member/delete"><li>회원 탈퇴</li></a>
-                        <a href="/logout"><li>로그아웃</li></a>
+                        <a href="<c:url value='/mypage'/>"><li>마이 페이지</li></a>
+                        <a href="<c:url value='/wish/list'/>"><li>위시리스트</li></a>
+                        <a href="<c:url value='/cart/list'/>"><li>장바구니</li></a>
+                        <a href="<c:url value='/mypage/order'/>"><li>주문내역 조회</li></a>
+                        <a href="<c:url value='/mypage/member/modify'/>"><li>회원 정보 수정</li></a>
+                        <a href="<c:url value='/member/delete'/>"><li>회원 탈퇴</li></a>
+                        <a href="<c:url value='/logout'/>"><li>로그아웃</li></a>
                     </ul>
-                    <a href="/cs/question/list"><button id="qnaBtn">1:1 문의하기</button></a>
+                    <a href="<c:url value='/cs/question/list'/>"><button id="qnaBtn">1:1 문의하기</button></a>
                 </div>
                 
                 <div class="my-right-container">

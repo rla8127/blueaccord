@@ -240,7 +240,7 @@ tbody .foot-br {
                 <div class="order-info-left">
 
                     <div class="order-left-box order_item">
-                    <form id="orderForm" method="post" action="/order/new">
+                    <form id="orderForm" method="post" action="<c:url value='/order/new'/>">
                         <table class="order_item_table">
                             <tr>
                                 <th><h3 class="order_item_header">주문상품</h3></th>

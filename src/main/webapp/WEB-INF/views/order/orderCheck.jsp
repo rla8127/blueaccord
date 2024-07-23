@@ -207,7 +207,7 @@
 
         <div class="button-container">
             <button type="button" id="orderBtn">주문확인하기</button>
-            <a href="/category?category=CAP"><button type="button" id="shopBtn">쇼핑계속하기</button></a>
+            <a href="<c:url value='/category?category=CAP'/>"><button type="button" id="shopBtn">쇼핑계속하기</button></a>
         </div>
 
 

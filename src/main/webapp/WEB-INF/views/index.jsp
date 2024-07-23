@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
 <%@ include file = "./common/header.jsp" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <style>

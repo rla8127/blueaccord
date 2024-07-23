@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ include file = "../common/header.jsp" %>
 <%@ page import="java.net.URLDecoder"%>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,6 @@
 <body>
     <div class="container">
         <div class="register-container">
-
         </div>
     </div>
 <script>

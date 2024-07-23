@@ -21,8 +21,7 @@ public class WishController {
     WishService wishService;
 
     @GetMapping("/list")
-    public String wishList(HttpServletRequest request, Model m){
-        HttpSession session = request.getSession();
+    public String wishList(HttpSession session, Model m){
         String id = (String) session.getAttribute("id");
         try {
             List<WishListDto> list = wishService.selectList(id);
@@ -36,9 +35,8 @@ public class WishController {
 
     @ResponseBody
     @PostMapping
-    public ResponseEntity<String> insert(HttpServletRequest request, @RequestBody int item_id, Model m){
+    public ResponseEntity<String> insert(HttpSession session, @RequestBody int item_id, Model m){
         try {
-            HttpSession session = request.getSession();
             String id = (String) session.getAttribute("id");
             wishService.insert(item_id, id);
             return new ResponseEntity<>("OK", HttpStatus.OK);

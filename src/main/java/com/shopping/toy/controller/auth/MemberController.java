@@ -57,8 +57,6 @@ public class MemberController {
     @PostMapping("/delete")
     public String deleteMember(HttpSession session, int member_id, String rawPassword, RedirectAttributes r){
         try {
-            System.out.println("member_id = " + member_id);
-            System.out.println("rawPassword = " + rawPassword);
             memberService.delete(member_id, rawPassword);
             session.invalidate();
         } catch (Exception e) {

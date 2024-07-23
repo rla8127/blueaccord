@@ -268,7 +268,7 @@ button:hover {
         </table>
         <div class="button-container">
             <a href="<c:url value='/category?category=ETC'/>"><button id="shopBtn">쇼핑 계속하기</button></a>
-            <a href="/cart/list"><button id="cartBtn">장바구니 이동</button></a>
+            <a href="<c:url value='/cart/list'/>"><button id="cartBtn">장바구니 이동</button></a>
         </div>
     </div>
 </body>
@@ -318,7 +318,7 @@ button:hover {
     var item_id = this.getAttribute('data-item_id');
     var count = 1;
         
-    $.post('/cart/add', { item_id: item_id, count: count })
+    $.post("<c:url value='/cart/add'/>", { item_id: item_id, count: count })
         .done(function(response) {
             alert('장바구니에 추가되었습니다');
         })

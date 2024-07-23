@@ -105,7 +105,6 @@
     <h2>고객센터</h2>
   </div>
   <form id="form" class="question-frm" action="" method="post">
-
     <input type="hidden" name="question_id" value="${questionDto.question_id}">
     <h4>고객문의</h4>
     <table class="question-table">

@@ -25,8 +25,8 @@ public class ReviewController {
     public ResponseEntity<String> insert(HttpServletRequest request, @RequestBody ReviewDto reviewDto, Model m){
         HttpSession session = request.getSession();
         String id = (String) session.getAttribute("id");
-        System.out.println("id = " + id);
         reviewDto.setReviewer(id);
+
         try {
             reviewService.insert(reviewDto);
             return new ResponseEntity<>("OK", HttpStatus.OK);

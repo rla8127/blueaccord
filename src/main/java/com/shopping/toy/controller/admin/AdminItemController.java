@@ -33,7 +33,7 @@ public class AdminItemController {
     private final ItemImgService itemImgService;
 
     @GetMapping("/list")
-    public String itemList(HttpServletRequest request, SearchCondition sc, Model m){
+    public String itemList(SearchCondition sc, Model m){
         try {
             int totalCnt = itemService.itemResultCnt(sc);
             m.addAttribute("totalCnt", totalCnt);

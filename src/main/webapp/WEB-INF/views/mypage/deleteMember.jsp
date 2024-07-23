@@ -59,7 +59,7 @@
 <div class="container">
     <div class="delete-container">
         <h3>회원탈퇴를 진행하시기 위해 비밀번호를 입력해주세요.</h3>
-        <form action="/member/delete" method="post" id="delForm">
+        <form action="<c:url value='/member/delete'/>" method="post" id="delForm">
             <table>
                 <tr>
                     <th colspan="row">아이디</th>

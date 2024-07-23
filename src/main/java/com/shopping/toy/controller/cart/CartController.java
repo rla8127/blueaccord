@@ -86,11 +86,10 @@ public class CartController {
 
     @ResponseBody
     @PatchMapping("/update")
-    public ResponseEntity<String> updateCart(HttpServletRequest request,@RequestBody CartListDto cartLstDto, Model m){
+    public ResponseEntity<String> updateCart(HttpServletRequest request, @RequestBody CartListDto cartLstDto, Model m){
         // 현재 세션에 있는 MemberID 조회 => MemberID를 통한 Cart_id 구하기
         HttpSession session = request.getSession();
         String id = (String) session.getAttribute("id");
-        System.out.println("id = " + id);
         int cart_id = cartService.getCartId(id);
 
         // Cart_id, Item_id, count를 Cart_item 생성자 인자로 넘겨줌

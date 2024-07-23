@@ -12,8 +12,8 @@
     <footer>
         <div class="footer-container">
             <div class="company-container">
-                <a href="/">
-                    <a href="/"><div class="logo">BLUEACCORD</div></a>
+                <a href="<c:url value='/'/>">
+                    <div class="logo">BLUEACCORD</div>
                 </a>
                 <div class="info">
                     <div class="info-item">(주) 블루어코드</div><br>
@@ -25,11 +25,11 @@
             <div class="menu">
                 <div class="wrap bk">
                     <p class="wrap-header">고객 서비스</p>
-                    <a href="/mypage/order">주문조회</a>
-                    <a href="/cs/question/list">고객센터</a>
-                    <a href="#">매장안내</a>
-                    <a href="#">이용약관</a>
-                    <a href="#">개인정보처리 방침</a>
+                    <a href="<c:url value='/mypage/order'/>">주문조회</a>
+                    <a href="<c:url value='/cs/question/list'/>">고객센터</a>
+                    <a href="<c:url value='/'/>">매장안내</a>
+                    <a href="<c:url value='/'/>">이용약관</a>
+                    <a href="<c:url value='/'/>">개인정보처리 방침</a>
                 </div>
             </div>
             <div class="menu">
