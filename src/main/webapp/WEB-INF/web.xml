@@ -28,8 +28,18 @@
   </servlet>
 
   <error-page>
+    <error-code>400</error-code>
+    <location>/WEB-INF/views/error/error400.jsp</location>
+  </error-page>
+
+  <error-page>
       <error-code>403</error-code>
       <location>/WEB-INF/views/error/error403.jsp</location>
+  </error-page>
+
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/views/error403/error500.jsp</location>
   </error-page>
 
   <servlet-mapping>
